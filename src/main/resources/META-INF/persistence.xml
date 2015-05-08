@@ -1,0 +1,47 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+             version="1.0">
+
+    <!-- 持久化单元是一堆实体Bean的集合，事务的类型 : 本地事务， 全局事务-->
+    <persistence-unit name="sun" transaction-type="RESOURCE_LOCAL">
+        <!--<provider>org.hibernate.ejb.HibernatePersistence</provider>-->
+        <!-- EJB3全局事务及数据源 -->
+        <!--<jta-data-source>java:/DefaultDS</jta-data-source> -->
+        <properties>
+            <!-- MySQL 数据库方言 -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
+            <!-- update映射数据已存在创建表，如果不存在创建表，添加字段更新数据表， create-drop应用启动创建，应用关闭删除数据库 -->
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+            <property name="hibernate.connection.username" value="root"/>
+            <property name="hibernate.connection.password" value="123456"/>
+            <property name="hibernate.connection.url"
+                      value="jdbc:mysql://localhost:3306/sundl?useUnicode=true&amp;characterEncoding=UTF-8"/>
+            <property name="hibernate.max_fetch_depth" value="3"/>
+            <property name="hibernate.jdbc.fetch_size" value="18"/>
+            <property name="hibernate.jdbc.batch_size" value="10"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="false"/>
+        </properties>
+
+        <!--
+        <properties>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect" />
+            <property name="hibernate.hbm2ddl.auto" value="update" />
+            <property name="hibernate.connection.driver_class"
+                value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+            <property name="hibernate.connection.username" value="sa" />
+            <property name="hibernate.connection.password" value="sa123$" />
+            <property name="hibernate.connection.url"
+                value="jdbc:sqlserver://192.168.104.194:1433;DatabaseName=itcast" />
+            <property name="hibernate.max_fetch_depth" value="3" />
+            <property name="hibernate.jdbc.fetch_size" value="18" />
+            <property name="hibernate.jdbc.batch_size" value="10" />
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.format_sql" value="false" />
+        </properties>
+        -->
+    </persistence-unit>
+
+</persistence>
